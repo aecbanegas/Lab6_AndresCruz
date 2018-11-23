@@ -701,7 +701,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        modificardelito.setText("jMenuItem1");
+        modificardelito.setText("Modificar");
         modificardelito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificardelitoActionPerformed(evt);
@@ -709,7 +709,7 @@ public class Principal extends javax.swing.JFrame {
         });
         popupdelitos.add(modificardelito);
 
-        eliminardelito.setText("jMenuItem1");
+        eliminardelito.setText("Eliminar");
         eliminardelito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminardelitoActionPerformed(evt);
@@ -1049,13 +1049,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void eliminardelitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminardelitoActionPerformed
         // TODO add your handling code here:
-        ac.getListaPersona().get(Indexprivado).getDelitos().remove(jl_Delitos.getSelectedIndex());
+        ac.getListaPersona().get(Indexprivado).getDelitos().remove(jl_Delitos.getSelectedIndex());        
         DefaultListModel modelo=(DefaultListModel)jl_Delitos.getModel();
         modelo.clear();
         for (int i = 0; i < ac.getListaPersona().get(Indexprivado).getDelitos().size(); i++) {
             modelo.addElement(ac.getListaPersona().get(Indexprivado).getDelitos().get(i));
         }
         jl_Delitos.setModel(modelo);
+        try {
+            ac.escribirArchivo();
+            ac.cargarArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_eliminardelitoActionPerformed
 
     public boolean validacionid(String id) {
