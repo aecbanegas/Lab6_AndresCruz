@@ -5,8 +5,8 @@ public class Secuestro extends Delito{
     int dias;
     int edad_victima;
 
-    public Secuestro(int dias, int edad_victima, String descripcion, String gravedad, String culpable, String tipo) {
-        super(descripcion, gravedad, culpable, tipo);
+    public Secuestro(int dias, int edad_victima, String descripcion, String gravedad, String culpable) {
+        super(descripcion, gravedad, culpable, "Secuestro");
         this.dias = dias;
         this.edad_victima = edad_victima;
     }

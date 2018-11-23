@@ -5,8 +5,8 @@ public class Robo extends Delito{
     String nombre;
     double valor;
 
-    public Robo(String nombre, double valor, String descripcion, String gravedad, String culpable, String tipo) {
-        super(descripcion, gravedad, culpable, tipo);
+    public Robo(String nombre, double valor, String descripcion, String gravedad, String culpable) {
+        super(descripcion, gravedad, culpable, "Robo");
         this.nombre = nombre;
         this.valor = valor;
     }

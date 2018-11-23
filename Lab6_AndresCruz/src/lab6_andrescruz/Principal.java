@@ -5,7 +5,8 @@
  */
 package lab6_andrescruz;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 import javax.swing.DefaultListModel;
 
 /**
@@ -13,12 +14,12 @@ import javax.swing.DefaultListModel;
  * @author MBanegas
  */
 public class Principal extends javax.swing.JFrame {
-    ArrayList<Criminal>lista=new ArrayList();
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,6 +32,18 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_crearcriminal = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tf_nombre = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        js_edad = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
+        tf_identidad = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        js_celda = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        js_condena = new javax.swing.JSpinner();
+        jButton3 = new javax.swing.JButton();
         jd_modificarcriminal = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -41,15 +54,89 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Crear Criminal");
+
+        jLabel4.setText("Nombre: ");
+
+        jLabel5.setText("Edad:");
+
+        js_edad.setModel(new javax.swing.SpinnerNumberModel(1, 0, 150, 1));
+
+        jLabel6.setText("Identidad:");
+
+        jLabel7.setText("Celda:");
+
+        js_celda.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel8.setText("Condena:");
+
+        js_condena.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jButton3.setText("Guardar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_crearcriminalLayout = new javax.swing.GroupLayout(jd_crearcriminal.getContentPane());
         jd_crearcriminal.getContentPane().setLayout(jd_crearcriminalLayout);
         jd_crearcriminalLayout.setHorizontalGroup(
             jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jd_crearcriminalLayout.createSequentialGroup()
+                .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crearcriminalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(24, 24, 24)
+                        .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf_nombre)
+                                .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tf_identidad, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                            .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(js_condena, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(js_celda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))))
+                    .addGroup(jd_crearcriminalLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jButton3)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jd_crearcriminalLayout.setVerticalGroup(
             jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_crearcriminalLayout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tf_identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(js_celda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_crearcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(js_condena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton3)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jd_modificarcriminalLayout = new javax.swing.GroupLayout(jd_modificarcriminal.getContentPane());
@@ -82,6 +169,11 @@ public class Principal extends javax.swing.JFrame {
         jButton1.setText("Crear Expediente");
 
         jButton2.setText("Crear Criminal");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,6 +218,21 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        jd_crearcriminal.setModal(true);
+        jd_crearcriminal.pack();
+        jd_crearcriminal.setLocationRelativeTo(this);
+        jd_crearcriminal.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+        jd_crearcriminal.dispose();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    
     /**
      * @param args the command line arguments
      */
@@ -164,13 +271,25 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_crearcriminal;
     private javax.swing.JDialog jd_modificarcriminal;
     private javax.swing.JList<String> jl_criminales;
+    private javax.swing.JSpinner js_celda;
+    private javax.swing.JSpinner js_condena;
+    private javax.swing.JSpinner js_edad;
     private javax.swing.JTextArea ta_datos;
+    private javax.swing.JTextField tf_identidad;
+    private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,8 @@ public class Trafico extends Delito{
     String producto;
     double peso;
 
-    public Trafico(String producto, double peso, String descripcion, String gravedad, String culpable, String tipo) {
-        super(descripcion, gravedad, culpable, tipo);
+    public Trafico(String producto, double peso, String descripcion, String gravedad, String culpable) {
+        super(descripcion, gravedad, culpable, "Trafico");
         this.producto = producto;
         this.peso = peso;
     }

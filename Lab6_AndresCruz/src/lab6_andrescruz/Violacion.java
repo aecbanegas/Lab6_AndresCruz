@@ -4,8 +4,8 @@ package lab6_andrescruz;
 public class Violacion extends Delito{
     int edad;
 
-    public Violacion(int edad, String descripcion, String gravedad, String culpable, String tipo) {
-        super(descripcion, gravedad, culpable, tipo);
+    public Violacion(int edad, String descripcion, String gravedad, String culpable) {
+        super(descripcion, gravedad, culpable, "Violacion");
         this.edad = edad;
     }
 
