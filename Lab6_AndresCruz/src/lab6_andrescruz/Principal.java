@@ -7,6 +7,8 @@ package lab6_andrescruz;
 
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -15,7 +17,9 @@ import javax.swing.JOptionPane;
  * @author MBanegas
  */
 public class Principal extends javax.swing.JFrame {
-    administrarCriminales ac=new administrarCriminales("./criminales.txt");
+
+    administrarCriminales ac = new administrarCriminales("./criminales.txt");
+
     /**
      * Creates new form Principal
      */
@@ -23,7 +27,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         ac.cargarArchivo();
-        DefaultListModel modelo=(DefaultListModel)jl_criminales.getModel();
+        DefaultListModel modelo = (DefaultListModel) jl_criminales.getModel();
         for (int i = 0; i < ac.getListaPersona().size(); i++) {
             modelo.addElement(ac.getListaPersona().get(i));
         }
@@ -53,14 +57,63 @@ public class Principal extends javax.swing.JFrame {
         js_condena = new javax.swing.JSpinner();
         jButton3 = new javax.swing.JButton();
         jd_modificarcriminal = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
+        tf_nombre1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        js_edad1 = new javax.swing.JSpinner();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tf_identidad1 = new javax.swing.JTextField();
+        js_celda1 = new javax.swing.JSpinner();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        js_condena1 = new javax.swing.JSpinner();
+        jButton5 = new javax.swing.JButton();
+        popuplistar = new javax.swing.JPopupMenu();
+        Modificar = new javax.swing.JMenuItem();
+        Eliminar = new javax.swing.JMenuItem();
+        MostrarDelitos = new javax.swing.JMenuItem();
+        jd_agregardelitos = new javax.swing.JDialog();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ta_datos = new javax.swing.JTextArea();
+        ta_descripcion = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        cb_gravedad = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        cb_culpa = new javax.swing.JComboBox<>();
+        cb_tipo = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        tf_arma = new javax.swing.JTextField();
+        js_victimas = new javax.swing.JSpinner();
+        jLabel22 = new javax.swing.JLabel();
+        js_edadvitimaviolacion = new javax.swing.JSpinner();
+        jLabel23 = new javax.swing.JLabel();
+        tf_objetorobado = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        js_valorobjetorobado = new javax.swing.JSpinner();
+        jLabel26 = new javax.swing.JLabel();
+        tf_productotrafico = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        js_pesotrafico = new javax.swing.JSpinner();
+        jLabel28 = new javax.swing.JLabel();
+        js_diasSecuestrado = new javax.swing.JSpinner();
+        jLabel29 = new javax.swing.JLabel();
+        js_edadvictimasecuestro = new javax.swing.JSpinner();
+        jButton6 = new javax.swing.JButton();
+        jd_modificardelitos = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jl_criminales = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_Delitos = new javax.swing.JList<>();
+        jLabel9 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -147,14 +200,303 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 32, Short.MAX_VALUE))
         );
 
+        jLabel10.setText("Nombre: ");
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Modificar Criminal");
+
+        js_edad1.setModel(new javax.swing.SpinnerNumberModel(1, 0, 150, 1));
+
+        jLabel12.setText("Edad:");
+
+        jLabel13.setText("Identidad:");
+
+        js_celda1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel14.setText("Celda:");
+
+        jLabel15.setText("Condena:");
+
+        js_condena1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jButton5.setText("Modificar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_modificarcriminalLayout = new javax.swing.GroupLayout(jd_modificarcriminal.getContentPane());
         jd_modificarcriminal.getContentPane().setLayout(jd_modificarcriminalLayout);
         jd_modificarcriminalLayout.setHorizontalGroup(
             jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jd_modificarcriminalLayout.createSequentialGroup()
+                .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modificarcriminalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15))
+                        .addGap(24, 24, 24)
+                        .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf_nombre1)
+                                .addComponent(js_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tf_identidad1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                            .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(js_condena1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(js_celda1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))))
+                    .addGroup(jd_modificarcriminalLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jButton5)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_modificarcriminalLayout.setVerticalGroup(
             jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarcriminalLayout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(js_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tf_identidad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(js_celda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificarcriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(js_condena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton5)
+                .addGap(0, 39, Short.MAX_VALUE))
+        );
+
+        Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
+        popuplistar.add(Modificar);
+
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+        popuplistar.add(Eliminar);
+
+        MostrarDelitos.setText("Mostrar Delitos");
+        MostrarDelitos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarDelitosActionPerformed(evt);
+            }
+        });
+        popuplistar.add(MostrarDelitos);
+
+        jLabel16.setText("Decripcion:");
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Agregar Delitos");
+
+        ta_descripcion.setColumns(20);
+        ta_descripcion.setRows(5);
+        jScrollPane1.setViewportView(ta_descripcion);
+
+        jLabel18.setText("Gravedad:");
+
+        cb_gravedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Leve", "Moderado", "Grave" }));
+
+        jLabel19.setText("Culpabilidad: ");
+
+        cb_culpa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inocente", "Culpable" }));
+
+        cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asesinato", "Violacion", "Robo", "Secuestro", "Trafico" }));
+
+        jLabel20.setText("Tipo:");
+
+        jLabel21.setText("Arma (Solo si es Asesinato):");
+
+        js_victimas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel22.setText("Victimas (Solo Asesinato):");
+
+        js_edadvitimaviolacion.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel23.setText("Edad Victima (Solo Violacion):");
+
+        jLabel24.setText("Objeto Robado (Solo Robo):");
+
+        jLabel25.setText("Valor del Objeto (Solo Robo):");
+
+        js_valorobjetorobado.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.1d, null, 1.0d));
+
+        jLabel26.setText("Nombre Producto (Solo Trafico):");
+
+        jLabel27.setText("Peso en kilos (Solo Trafico):");
+
+        js_pesotrafico.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.1d, null, 1.0d));
+
+        jLabel28.setText("Tiempo que estuvo secuestrado (Solo Secuestro):");
+
+        js_diasSecuestrado.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel29.setText("Edad Victima(Solo Secuestro):");
+
+        js_edadvictimasecuestro.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jButton6.setText("Guardar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_agregardelitosLayout = new javax.swing.GroupLayout(jd_agregardelitos.getContentPane());
+        jd_agregardelitos.getContentPane().setLayout(jd_agregardelitosLayout);
+        jd_agregardelitosLayout.setHorizontalGroup(
+            jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregardelitosLayout.createSequentialGroup()
+                            .addComponent(jLabel18)
+                            .addGap(18, 18, 18)
+                            .addComponent(cb_gravedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregardelitosLayout.createSequentialGroup()
+                            .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel19)
+                                .addComponent(jLabel20))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cb_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_culpa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(44, 44, 44)
+                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(js_valorobjetorobado)
+                    .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_objetorobado)
+                            .addComponent(js_edadvitimaviolacion, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                            .addComponent(js_victimas))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tf_productotrafico)
+                    .addComponent(js_pesotrafico)
+                    .addComponent(tf_arma, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(js_diasSecuestrado, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                            .addComponent(js_edadvictimasecuestro)))
+                    .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59))
+            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_agregardelitosLayout.setVerticalGroup(
+            jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
+                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(cb_gravedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(cb_culpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20)))
+                    .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(tf_arma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28)
+                            .addComponent(js_diasSecuestrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(js_victimas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel29)
+                            .addComponent(js_edadvictimasecuestro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(js_edadvitimaviolacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_agregardelitosLayout.createSequentialGroup()
+                                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tf_objetorobado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel24))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel25)
+                                    .addComponent(js_valorobjetorobado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(tf_productotrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_agregardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(js_pesotrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(27, 27, 27))
+        );
+
+        javax.swing.GroupLayout jd_modificardelitosLayout = new javax.swing.GroupLayout(jd_modificardelitos.getContentPane());
+        jd_modificardelitos.getContentPane().setLayout(jd_modificardelitosLayout);
+        jd_modificardelitosLayout.setHorizontalGroup(
+            jd_modificardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_modificardelitosLayout.setVerticalGroup(
+            jd_modificardelitosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -164,12 +506,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Bienvenido al Centro Penitenciario de Santa Barbara \"El Pozo\"");
 
-        ta_datos.setEditable(false);
-        ta_datos.setColumns(20);
-        ta_datos.setRows(5);
-        jScrollPane1.setViewportView(ta_datos);
-
         jl_criminales.setModel(new DefaultListModel());
+        jl_criminales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_criminalesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jl_criminales);
 
         jLabel2.setText("Criminales:");
@@ -183,44 +525,69 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setViewportView(jl_Delitos);
+
+        jLabel9.setText("Delitos:");
+
+        jButton4.setText("Agregar Delito");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel9))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,19 +604,24 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         try {
-            String nombre=tf_nombre.getText();
-            int edad=(Integer)js_edad.getValue();
-            String identidad=tf_identidad.getText();
-            if (validacionid(identidad)) {                
-            }else{
-                int nel=Integer.parseInt(identidad);
+            String nombre = tf_nombre.getText();
+            int edad = (Integer) js_edad.getValue();
+            String identidad = tf_identidad.getText();
+            if (validacionid(identidad)) {
+            } else {
+                int nel = Integer.parseInt(identidad);
             }
-            int celda=(Integer)js_celda.getValue();
-            int condena=(Integer)js_condena.getValue();
+            int celda = (Integer) js_celda.getValue();
+            int condena = (Integer) js_condena.getValue();
             ac.getListaPersona().add(new Criminal(nombre, edad, identidad, celda, condena));
             ac.escribirArchivo();
             ac.cargarArchivo();
-            DefaultListModel modelo=(DefaultListModel)jl_criminales.getModel();
+            tf_nombre.setText("");
+            js_edad.setValue(18);
+            tf_identidad.setText("");
+            js_celda.setValue(0);
+            js_condena.setValue(1);
+            DefaultListModel modelo = (DefaultListModel) jl_criminales.getModel();
             modelo.clear();
             for (int i = 0; i < ac.getListaPersona().size(); i++) {
                 modelo.addElement(ac.getListaPersona().get(i));
@@ -258,23 +630,157 @@ public class Principal extends javax.swing.JFrame {
             jd_crearcriminal.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(jd_crearcriminal, "Algun dato es incorrecto! Corrija los errores!");
-        }        
+        }
     }//GEN-LAST:event_jButton3MouseClicked
-    
-    public boolean validacionid(String id){
-        int cont=0;
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        int index = jl_criminales.getSelectedIndex();
+        try {
+            String nombre = tf_nombre1.getText();
+            int edad = (Integer) js_edad1.getValue();
+            String identidad = tf_identidad1.getText();
+            if (validacionid(identidad)) {
+            } else {
+                int nel = Integer.parseInt(identidad);
+            }
+            int celda = (Integer) js_celda1.getValue();
+            int condena = (Integer) js_condena1.getValue();
+            ac.getListaPersona().remove(index);
+            ac.getListaPersona().add(index, new Criminal(nombre, edad, identidad, celda, condena));
+            ac.escribirArchivo();
+            ac.cargarArchivo();
+            tf_nombre1.setText("");
+            js_edad1.setValue(18);
+            tf_identidad1.setText("");
+            js_celda1.setValue(0);
+            js_condena1.setValue(1);
+            DefaultListModel modelo = (DefaultListModel) jl_criminales.getModel();
+            modelo.clear();
+            for (int i = 0; i < ac.getListaPersona().size(); i++) {
+                modelo.addElement(ac.getListaPersona().get(i));
+            }
+            jl_criminales.setModel(modelo);
+            jd_modificarcriminal.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_modificarcriminal, "Algun dato es incorrecto! Corrija los errores!");
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jl_criminalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_criminalesMouseClicked
+        // TODO add your handling code here:
+        if (jl_criminales.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                popuplistar.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_criminalesMouseClicked
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        // TODO add your handling code here:
+        int index = jl_criminales.getSelectedIndex();
+        DefaultListModel modelo = (DefaultListModel) jl_criminales.getModel();
+        tf_identidad1.setText(((Criminal) modelo.get(index)).getIdentidad());
+        tf_nombre1.setText(((Criminal) modelo.get(index)).getNombre());
+        js_celda1.setValue(((Criminal) modelo.get(index)).getCelda());
+        js_condena1.setValue(((Criminal) modelo.get(index)).getCondena());
+        js_edad1.setValue(((Criminal) modelo.get(index)).getEdad());
+        jd_modificarcriminal.setModal(true);
+        jd_modificarcriminal.pack();
+        jd_modificarcriminal.setLocationRelativeTo(this);
+        jd_modificarcriminal.setVisible(true);
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        // TODO add your handling code here:
+        int index = jl_criminales.getSelectedIndex();
+        ac.getListaPersona().remove(index);
+        DefaultListModel modelo = (DefaultListModel) jl_criminales.getModel();
+        modelo.clear();
+        for (int i = 0; i < ac.getListaPersona().size(); i++) {
+            modelo.addElement(ac.getListaPersona().get(i));
+        }
+        jl_criminales.setModel(modelo);
+        try {
+            ac.escribirArchivo();
+            ac.cargarArchivo();
+        } catch (IOException ex) {
+
+        }
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        if (jl_criminales.getSelectedIndex() >= 0) {
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar a un usuario para agregarle un delito!");
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void MostrarDelitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarDelitosActionPerformed
+        // TODO add your handling code here:
+        if (jl_criminales.getSelectedIndex() >= 0) {
+            if (ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El criminal no tiene delitos!");
+            } else {
+                DefaultListModel modelo = (DefaultListModel) jl_Delitos.getModel();
+                for (int i = 0; i < ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().size(); i++) {
+                    modelo.addElement(ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().get(i));
+                }
+                jl_Delitos.setModel(modelo);
+            }
+        }
+    }//GEN-LAST:event_MostrarDelitosActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        try {
+            String descripcion = ta_descripcion.getText();
+            String gravedad = (String) cb_gravedad.getSelectedItem();
+            String culpa = (String) cb_culpa.getSelectedItem();
+            String tipo = (String) cb_tipo.getSelectedItem();
+            switch (tipo) {
+                case "Robo":
+                    
+                    break;
+                case "Asesinato":
+                    String arma=tf_arma.getText();
+                    int victimas=(Integer)js_victimas.getValue();
+                    ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().add(new Asesinato(arma, victimas, descripcion, gravedad, culpa));
+                    break;
+                case "Secuestro":
+                    
+                    break;
+                case "Trafico":
+                    break;
+                case "Violacion":
+                    break;
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_agregardelitos, "Hay errores en los datos!! Corrija!!");
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    public boolean validacionid(String id) {
+        int cont = 0;
         for (int i = 0; i < id.length(); i++) {
             if (Character.isDigit(id.charAt(i))) {
                 cont++;
             }
         }
-        if (cont==id.length()) {
-        return true;    
-        }else{
-        return false;
+        if (cont == id.length()) {
+            return true;
+        } else {
+            return false;
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -311,27 +817,76 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Eliminar;
+    private javax.swing.JMenuItem Modificar;
+    private javax.swing.JMenuItem MostrarDelitos;
+    private javax.swing.JComboBox<String> cb_culpa;
+    private javax.swing.JComboBox<String> cb_gravedad;
+    private javax.swing.JComboBox<String> cb_tipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JDialog jd_agregardelitos;
     private javax.swing.JDialog jd_crearcriminal;
     private javax.swing.JDialog jd_modificarcriminal;
+    private javax.swing.JDialog jd_modificardelitos;
+    private javax.swing.JList<String> jl_Delitos;
     private javax.swing.JList<String> jl_criminales;
     private javax.swing.JSpinner js_celda;
+    private javax.swing.JSpinner js_celda1;
     private javax.swing.JSpinner js_condena;
+    private javax.swing.JSpinner js_condena1;
+    private javax.swing.JSpinner js_diasSecuestrado;
     private javax.swing.JSpinner js_edad;
-    private javax.swing.JTextArea ta_datos;
+    private javax.swing.JSpinner js_edad1;
+    private javax.swing.JSpinner js_edadvictimasecuestro;
+    private javax.swing.JSpinner js_edadvitimaviolacion;
+    private javax.swing.JSpinner js_pesotrafico;
+    private javax.swing.JSpinner js_valorobjetorobado;
+    private javax.swing.JSpinner js_victimas;
+    private javax.swing.JPopupMenu popuplistar;
+    private javax.swing.JTextArea ta_descripcion;
+    private javax.swing.JTextField tf_arma;
     private javax.swing.JTextField tf_identidad;
+    private javax.swing.JTextField tf_identidad1;
     private javax.swing.JTextField tf_nombre;
+    private javax.swing.JTextField tf_nombre1;
+    private javax.swing.JTextField tf_objetorobado;
+    private javax.swing.JTextField tf_productotrafico;
     // End of variables declaration//GEN-END:variables
 }
