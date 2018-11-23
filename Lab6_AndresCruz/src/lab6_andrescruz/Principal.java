@@ -734,6 +734,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setText("Criminales:");
 
         jButton1.setText("Crear Expediente");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Crear Criminal");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1063,6 +1068,15 @@ public class Principal extends javax.swing.JFrame {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_eliminardelitoActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        if (jl_criminales.getSelectedIndex()>=0) {
+            
+        }else{
+        JOptionPane.showMessageDialog(this, "Seleccione a un criminal");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     public boolean validacionid(String id) {
         int cont = 0;
