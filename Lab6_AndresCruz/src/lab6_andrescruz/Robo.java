@@ -61,7 +61,7 @@ public class Robo extends Delito{
 
     @Override
     public String toString() {
-        return "Robo{" + "nombre=" + nombre + ", valor=" + valor + '}';
+        return "Robo";
     }
     
 }

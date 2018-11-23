@@ -61,7 +61,7 @@ public class Trafico extends Delito{
 
     @Override
     public String toString() {
-        return "Trafico{" + "producto=" + producto + ", peso=" + peso + '}';
+        return "Trafico";
     }
     
 }

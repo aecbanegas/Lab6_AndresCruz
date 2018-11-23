@@ -1,1 +1,1 @@
-Serdna;20;0801200009067;88405;180;;Alexy;51;08018080088008;1200;15;;
+Serdna;20;0801200009067;88405;180;Violacion,5,sdbvonvoadvnsonv,Grave,Culpable,Violacion,5,sdbvonvoadvnsonv,Grave,Culpable,Violacion,5,sdbvonvoadvnsonv,Grave,Culpable,Violacion,5,sdbvonvoadvnsonv,Grave,Culpable,Robo,Cartera,0.0,Ajnoaoknof,Moderado,Culpable;Alexy;51;08018080088008;1200;15;;

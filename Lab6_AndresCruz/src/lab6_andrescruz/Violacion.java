@@ -51,7 +51,7 @@ public class Violacion extends Delito{
 
     @Override
     public String toString() {
-        return "Violacion{" + "edad=" + edad + '}';
+        return "Violacion";
     }
     
     

@@ -742,6 +742,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jl_Delitos.setModel(new DefaultListModel());
         jl_Delitos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_DelitosMouseClicked(evt);
@@ -996,8 +997,10 @@ public class Principal extends javax.swing.JFrame {
                     ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().add(new Violacion(edad, descripcion, gravedad, culpa));
                     break;
             }
+            System.out.println("Aqui");
             ac.escribirArchivo();
             ac.cargarArchivo();
+            System.out.println("Pero llego aqui");
             DefaultListModel modelo=(DefaultListModel)jl_Delitos.getModel();
             modelo.clear();
             for (int i = 0; i < ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().size(); i++) {

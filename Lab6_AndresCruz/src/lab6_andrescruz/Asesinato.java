@@ -61,7 +61,7 @@ public class Asesinato extends Delito{
 
     @Override
     public String toString() {
-        return "Asesinato{" + "arma=" + arma + ", victimas=" + victimas + '}';
+        return "Asesinato";
     }
     
     

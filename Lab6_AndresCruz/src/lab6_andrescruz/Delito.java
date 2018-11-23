@@ -45,9 +45,5 @@ public class Delito {
         this.tipo = tipo;
     }
 
-    @Override
-    public String toString() {
-        return "";
-    }
     
 }

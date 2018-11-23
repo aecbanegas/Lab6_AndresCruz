@@ -61,7 +61,7 @@ public class Secuestro extends Delito{
 
     @Override
     public String toString() {
-        return "Secuestro{" + "dias=" + dias + ", edad_victima=" + edad_victima + '}';
+        return "Secuestro";
     }
     
 }
