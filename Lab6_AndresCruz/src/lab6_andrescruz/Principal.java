@@ -8,18 +8,26 @@ package lab6_andrescruz;
 import java.io.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author MBanegas
  */
 public class Principal extends javax.swing.JFrame {
+    administrarCriminales ac=new administrarCriminales("./criminales.txt");
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        ac.cargarArchivo();
+        DefaultListModel modelo=(DefaultListModel)jl_criminales.getModel();
+        for (int i = 0; i < ac.getListaPersona().size(); i++) {
+            modelo.addElement(ac.getListaPersona().get(i));
+        }
+        jl_criminales.setModel(modelo);
     }
 
     /**
@@ -186,7 +194,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
@@ -228,10 +236,44 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        
-        jd_crearcriminal.dispose();
+        try {
+            String nombre=tf_nombre.getText();
+            int edad=(Integer)js_edad.getValue();
+            String identidad=tf_identidad.getText();
+            if (validacionid(identidad)) {                
+            }else{
+                int nel=Integer.parseInt(identidad);
+            }
+            int celda=(Integer)js_celda.getValue();
+            int condena=(Integer)js_condena.getValue();
+            ac.getListaPersona().add(new Criminal(nombre, edad, identidad, celda, condena));
+            ac.escribirArchivo();
+            ac.cargarArchivo();
+            DefaultListModel modelo=(DefaultListModel)jl_criminales.getModel();
+            modelo.clear();
+            for (int i = 0; i < ac.getListaPersona().size(); i++) {
+                modelo.addElement(ac.getListaPersona().get(i));
+            }
+            jl_criminales.setModel(modelo);
+            jd_crearcriminal.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_crearcriminal, "Algun dato es incorrecto! Corrija los errores!");
+        }        
     }//GEN-LAST:event_jButton3MouseClicked
-
+    
+    public boolean validacionid(String id){
+        int cont=0;
+        for (int i = 0; i < id.length(); i++) {
+            if (Character.isDigit(id.charAt(i))) {
+                cont++;
+            }
+        }
+        if (cont==id.length()) {
+        return true;    
+        }else{
+        return false;
+        }
+    }
     
     /**
      * @param args the command line arguments
@@ -244,7 +286,7 @@ public class Principal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
