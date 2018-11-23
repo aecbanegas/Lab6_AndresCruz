@@ -1001,11 +1001,9 @@ public class Principal extends javax.swing.JFrame {
                     int edad=(Integer)js_edadvitimaviolacion.getValue();
                     ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().add(new Violacion(edad, descripcion, gravedad, culpa));
                     break;
-            }
-            System.out.println("Aqui");
+            }         
             ac.escribirArchivo();
             ac.cargarArchivo();
-            System.out.println("Pero llego aqui");
             DefaultListModel modelo=(DefaultListModel)jl_Delitos.getModel();
             modelo.clear();
             for (int i = 0; i < ac.getListaPersona().get(jl_criminales.getSelectedIndex()).getDelitos().size(); i++) {
