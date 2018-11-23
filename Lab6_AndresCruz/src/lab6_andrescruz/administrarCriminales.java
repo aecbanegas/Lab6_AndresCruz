@@ -81,19 +81,47 @@ public class administrarCriminales {
                             break;
                         case "Secuestro":
                             if (i != criminal.getDelitos().size() - 1) {
-                                bw.write(((Secuestro)criminal.getDelitos().get(i)).getDias()+",");
-                                bw.write(((Secuestro)criminal.getDelitos().get(i)).getEdad_victima()+",");
+                                bw.write(((Secuestro) criminal.getDelitos().get(i)).getDias() + ",");
+                                bw.write(((Secuestro) criminal.getDelitos().get(i)).getEdad_victima() + ",");
                                 bw.write(criminal.getDelitos().get(i).getDescripcion() + ",");
                                 bw.write(criminal.getDelitos().get(i).getGravedad() + ",");
                                 bw.write(criminal.getDelitos().get(i).getCulpable() + ",");
 //                                Delitos.add(new Secuestro(s2.nextInt(), s2.nextInt(), s2.next(), s2.next(), s2.next()));
-                            }else{
-                            
+                            } else {
+                                bw.write(((Secuestro) criminal.getDelitos().get(i)).getDias() + ",");
+                                bw.write(((Secuestro) criminal.getDelitos().get(i)).getEdad_victima() + ",");
+                                bw.write(criminal.getDelitos().get(i).getDescripcion() + ",");
+                                bw.write(criminal.getDelitos().get(i).getGravedad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getCulpable());
                             }
                             break;
                         case "Trafico":
+                            if (i != criminal.getDelitos().size() - 1) {
+                                bw.write(((Trafico) criminal.getDelitos().get(i)).getProducto() + ",");
+                                bw.write(((Trafico) criminal.getDelitos().get(i)).getPeso() + ",");
+                                bw.write(criminal.getDelitos().get(i).getDescripcion() + ",");
+                                bw.write(criminal.getDelitos().get(i).getGravedad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getCulpable() + ",");
+                            } else {
+                                bw.write(((Trafico) criminal.getDelitos().get(i)).getProducto() + ",");
+                                bw.write(((Trafico) criminal.getDelitos().get(i)).getPeso() + ",");
+                                bw.write(criminal.getDelitos().get(i).getDescripcion() + ",");
+                                bw.write(criminal.getDelitos().get(i).getGravedad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getCulpable());
+                            }
                             break;
                         case "Violacion":
+                            if (i != criminal.getDelitos().size() - 1) {
+                                bw.write(((Violacion) criminal.getDelitos().get(i)).getEdad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getDescripcion() + ",");
+                                bw.write(criminal.getDelitos().get(i).getGravedad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getCulpable() + ",");
+                            } else {
+                                bw.write(((Violacion) criminal.getDelitos().get(i)).getEdad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getDescripcion() + ",");
+                                bw.write(criminal.getDelitos().get(i).getGravedad() + ",");
+                                bw.write(criminal.getDelitos().get(i).getCulpable());
+                            }
                             break;
                     }
                 }
